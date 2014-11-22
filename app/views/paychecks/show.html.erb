@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @paycheck.employee_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @paycheck.name %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @paycheck.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @paycheck.end_date %>
+</p>
+
+<p>
+  <strong>Total hours worked:</strong>
+  <%= @paycheck.total_hours_worked %>
+</p>
+
+<p>
+  <strong>Gross wages:</strong>
+  <%= @paycheck.gross_wages %>
+</p>
+
+<p>
+  <strong>Total deductions:</strong>
+  <%= @paycheck.total_deductions %>
+</p>
+
+<p>
+  <strong>Net wages:</strong>
+  <%= @paycheck.net_wages %>
+</p>
+
+<%= link_to 'Edit', edit_paycheck_path(@paycheck) %> |
+<%= link_to 'Back', paychecks_path %>

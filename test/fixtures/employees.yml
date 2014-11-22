@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  wage: 1.5
+  marital_status: MyString
+  fica: 1.5
+  fwh: 1.5
+  swh: 1.5
+  claims: 1
+
+two:
+  name: MyString
+  wage: 1.5
+  marital_status: MyString
+  fica: 1.5
+  fwh: 1.5
+  swh: 1.5
+  claims: 1
