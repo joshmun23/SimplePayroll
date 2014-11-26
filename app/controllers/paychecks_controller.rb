@@ -1,5 +1,6 @@
 class PaychecksController < ApplicationController
   before_action :set_paycheck, only: [:show, :edit, :update, :destroy]
+  before_action :set_employees
 
   # GET /paychecks
   # GET /paychecks.json
@@ -25,10 +26,11 @@ class PaychecksController < ApplicationController
   # POST /paychecks.json
   def create
     @paycheck = Paycheck.new(paycheck_params)
+    @paycheck.completed = false
 
     respond_to do |format|
       if @paycheck.save
-        format.html { redirect_to @paycheck, notice: 'Paycheck was successfully created.' }
+        format.html { redirect_to Employee.find(@paycheck.employee_id), notice: 'Paycheck was successfully created.' }
         format.json { render :show, status: :created, location: @paycheck }
       else
         format.html { render :new }
@@ -67,8 +69,12 @@ class PaychecksController < ApplicationController
       @paycheck = Paycheck.find(params[:id])
     end
 
+    def set_employees
+      @employees = Employee.all
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def paycheck_params
-      params.require(:paycheck).permit(:employee_id, :name, :start_date, :end_date, :total_hours_worked, :gross_wages, :total_deductions, :net_wages)
+      params.require(:paycheck).permit(:employee_id, :name, :start_date, :end_date, :total_hours_worked, :gross_wages, :total_deductions, :fica_deduction, :fwh_deduction, :swh_deduction, :net_wages, :completed)
     end
 end

@@ -42,3 +42,4 @@ gem 'rails_12factor', group: :production
 ruby "2.1.4"
 
 gem 'unicorn'
+gem 'will_paginate', '~> 3.0.6'

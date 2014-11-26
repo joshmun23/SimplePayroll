@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122082122) do
+ActiveRecord::Schema.define(version: 20141125225135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,12 @@ ActiveRecord::Schema.define(version: 20141122082122) do
     t.float    "net_wages"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "fica_deduction"
+    t.integer  "fwh_deduction"
+    t.float    "swh_deduction"
+    t.boolean  "completed"
   end
+
+  add_index "paychecks", ["employee_id", "created_at"], name: "index_paychecks_on_employee_id_and_created_at", using: :btree
 
 end

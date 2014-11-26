@@ -35,5 +35,22 @@
   <%= @employee.claims %>
 </p>
 
+<div class="col-md-8">
+    <% if @employee.paychecks.any? %>
+      <h3>Paychecks (<%= @employee.paychecks %>)</h3>
+      <% @paychecks.each do |paycheck| %>
+        <%= "#{paycheck.start_date} to #{paycheck.end_date}" %>
+        <%= paycheck.total_hours_worked %>
+        <%= paycheck.gross_wages        %>
+        <%= paycheck.fica_deduction     %>
+        <%= "fwh = #{paycheck.fwh_deduction}"      %>
+        <%= paycheck.swh_deduction      %>
+        <%= paycheck.total_deductions   %>
+        <%= paycheck.net_wages          %>
+        <br>
+      <% end %>
+    <% end %>
+  </div>
+
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
 <%= link_to 'Back', employees_path %>
