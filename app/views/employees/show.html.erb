@@ -30,27 +30,76 @@
   <%= @employee.swh %>
 </p>
 
-<p>
-  <strong>Claims:</strong>
-  <%= @employee.claims %>
-</p>
-
-<div class="col-md-8">
-    <% if @employee.paychecks.any? %>
-      <h3>Paychecks (<%= @employee.paychecks %>)</h3>
-      <% @paychecks.each do |paycheck| %>
-        <%= "#{paycheck.start_date} to #{paycheck.end_date}" %>
-        <%= paycheck.total_hours_worked %>
-        <%= paycheck.gross_wages        %>
-        <%= paycheck.fica_deduction     %>
-        <%= "fwh = #{paycheck.fwh_deduction}"      %>
-        <%= paycheck.swh_deduction      %>
-        <%= paycheck.total_deductions   %>
-        <%= paycheck.net_wages          %>
-        <br>
-      <% end %>
-    <% end %>
+<% if @employee.paychecks.any? %>
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="col-md-1">
+      <strong>Start Date</strong>
+    </div>
+    <div class="col-md-1">
+      <strong>End Date</strong>
+    </div>
+    <div class="col-md-1">
+      <strong>Total Hours</strong>
+    </div>
+    <div class="col-md-1">
+      <strong>Gross Wages</strong>
+    </div>
+    <div class="col-md-1">
+      <strong>Fica Deduction</strong>
+    </div>
+    <div class="col-md-1">
+      <strong>FWH Deduction</strong>
+    </div>
+    <div class="col-md-1">
+      <strong>FWH Fixed</strong>
+    </div>
+    <div class="col-md-1">
+      <strong>SWH Deduction</strong>
+    </div>
+    <div class="col-md-2">
+      <strong>Total Deductions</strong>
+    </div>
+    <div class="col-md-1">
+      <strong>Net Wages</strong>
+    </div>
   </div>
+</div>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="col-md-1">
+      <%= @employee.paychecks.last.start_date %>
+    </div>
+    <div class="col-md-1">
+      <%= @employee.paychecks.last.end_date %>
+    </div>
+    <div class="col-md-1">
+      <%= @employee.paychecks.last.total_hours_worked %>
+    </div>
+    <div class="col-md-1">
+      <%= @employee.paychecks.last.gross_wages %>
+    </div>
+    <div class="col-md-1">
+      <%= @employee.paychecks.last.fica_deduction %>
+    </div>
+    <div class="col-md-1">
+      <%= @employee.paychecks.last.fwh_deduction %>
+    </div>
+    <div class="col-md-1">
+      <%= @employee.fwh_fixed %>
+    </div>
+    <div class="col-md-1">
+      <%= @employee.paychecks.last.swh_deduction %>
+    </div>
+    <div class="col-md-2">
+      <%= @employee.paychecks.last.total_deductions %>
+    </div>
+    <div class="col-md-1">
+      <%= @employee.paychecks.last.net_wages %>
+    </div>
+  </div>
+</div>
+<% end %>
+<%= link_to 'Edit', edit_employee_path(@employee) %> 
 <%= link_to 'Back', employees_path %>

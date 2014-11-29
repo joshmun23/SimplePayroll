@@ -20,8 +20,8 @@
     <%= f.text_field :wage %>
   </div>
   <div class="field">
-    <%= f.label :marital_status %><br>
-    <%= f.text_field :marital_status %>
+    <%= f.label :marital_status %></br>
+    <%= f.select(:marital_status, options_for_select([['',''],['Married','Married'],['Single','Single']])) %>
   </div>
   <div class="field">
     <%= f.label :fica %><br>
@@ -32,12 +32,11 @@
     <%= f.text_field :fwh %>
   </div>
   <div class="field">
+    <%= f.label :fwh_fixed %><br>
+    <%= f.text_field :fwh_fixed %>
+  <div class="field">
     <%= f.label :swh %><br>
     <%= f.text_field :swh %>
-  </div>
-  <div class="field">
-    <%= f.label :claims %><br>
-    <%= f.number_field :claims %>
   </div>
   <div class="actions">
     <%= f.submit %>

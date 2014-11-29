@@ -1,38 +1,86 @@
-<h1>Listing employees</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="text-center">
+      <h1>Employees</h1>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Wage</th>
-      <th>Marital status</th>
-      <th>Fica</th>
-      <th>Fwh</th>
-      <th>Swh</th>
-      <th>Claims</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="row text-center">
+    <div class="col-md-1 col-md-offset-1">
+      <h4>Name</h4>
+    </div>
+    <div class="col-md-1">  
+      <h4>Wage</h4>
+    </div>
+    <div class="col-md-2">
+      <h4>Marital Status</h4>
+    </div>
+    <div class="col-md-1">
+      <h4>Fica</h4>
+    </div>
+    <div class="col-md-1">
+      <h4>Fwh</h4>
+    </div>
+    <div class="col-md-1">
+      <h4>Swh</h4>
+    </div>
+    <div class="col-md-3">
+      <div class="text-center">
+        <h4>Actions</h4>
+      </div>
+    </div>
+  </div>
 
-  <tbody>
-    <% @employees.each do |employee| %>
-      <tr>
-        <td><%= employee.name %></td>
-        <td><%= employee.wage %></td>
-        <td><%= employee.marital_status %></td>
-        <td><%= employee.fica %></td>
-        <td><%= employee.fwh %></td>
-        <td><%= employee.swh %></td>
-        <td><%= employee.claims %></td>
-        <td><%= link_to 'Show', employee %></td>
-        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <% @employees.each do |employee| %>
+    <div class="row text-center">  
+      <div class="col-md-1 col-md-offset-1 text-center">
+        <strong><%= employee.name %></strong>
+      </div>
+      <div class="col-md-1">
+        <%= employee.wage %>
+      </div>
+      <div class="col-md-2">
+        <%= employee.marital_status %>
+      </div>
+      <div class="col-md-1">
+        <%= employee.fica %>
+      </div>
+      <div class="col-md-1">
+        <%= employee.fwh %>
+      </div>
+      <div class="col-md-1">
+        <%= employee.swh %>
+      </div>
+      <div class="col-md-1">
+        <%= link_to 'Details & History', employee %>
+      </div>
+      <div class="col-md-1">
+        <%= link_to 'Edit Details', edit_employee_path(employee) %>
+      </div>
+      <div class="col-md-1">
+        <%= link_to 'Delete Employee', employee, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <% if Employee.any? %>
+      <div class="col-lg-5 col-lg-offset-1">
+        <div class="text-center">
+          <h3><%= link_to 'New Employee', new_employee_path %></h3>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="text-center">
+            <h3><%= link_to 'New Paycheck', new_employee_paycheck_path(Employee.first) %><h3>
+          
+        </div>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <h3><%= link_to "Create a New Employee", new_employee_path %></h3>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Employee', new_employee_path %>
-<%= link_to 'New Paycheck', 'paychecks#new' %>
+  </div>
+</div>

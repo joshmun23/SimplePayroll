@@ -73,7 +73,7 @@ class EmployeesController < ApplicationController
         @employee.paychecks[index].fica_deduction = paycheck.gross_wages * @employee.fica / 100
         @employee.paychecks[index].fwh_deduction  = fwh_finder(@employee.paychecks[index].gross_wages,index)
         @employee.paychecks[index].swh_deduction  = paycheck.gross_wages * @employee.swh / 100
-        @employee.paychecks[index].total_deductions = @employee.paychecks[index].fica_deduction + @employee.paychecks[index].fwh_deduction + @employee.paychecks[index].swh_deduction
+        @employee.paychecks[index].total_deductions = @employee.paychecks[index].fica_deduction + @employee.paychecks[index].fwh_deduction + @employee.fwh_fixed + @employee.paychecks[index].swh_deduction
         @employee.paychecks[index].net_wages        = paycheck.gross_wages - @employee.paychecks[index].total_deductions
 
         @employee.paychecks[index].update_attributes(gross_wages:    @employee.paychecks[index].gross_wages,
@@ -126,6 +126,6 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:name, :wage, :marital_status, :fica, :fwh, :swh, :claims)
+      params.require(:employee).permit(:name, :wage, :marital_status, :fica, :fwh, :swh, :claims, :fwh_fixed)
     end
 end
