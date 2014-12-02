@@ -1,7 +1,6 @@
-<% @employees.each do |employee| %>
-  <%= "#{employee.name} id: #{employee.id}" %></br>
-<% end %>
+<div class="row top-buffer">
 
+<div class="col-md-12 text-center">
 <%= form_for(@paycheck) do |f| %>
   <% if @paycheck.errors.any? %>
     <div id="error_explanation">
@@ -15,24 +14,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label "Employee ID" %><br>
-    <%= f.number_field :employee_id %>
-  </div>
-  </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
-  </div>
-  <div class="field">
-    <%= f.label :total_hours_worked %><br>
-    <%= f.text_field :total_hours_worked %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <div class="row paycheck-form">
+      <div class="field">
+        <%= f.label "Select Employee" %><br>
+
+        <%= f.select(:employee_id, options_for_select(@options)) %>
+
+      </div>
+    </div>
+    <div class="row paycheck-form">
+      <div class="field">
+        <%= f.label :start_date %><br>
+        <%= f.date_select :start_date %>
+      </div>
+    </div>
+    <div class="row paycheck-form">
+      <div class="field">
+        <%= f.label :end_date %><br>
+        <%= f.date_select :end_date %>
+      </div>
+    </div>
+    <div class="row paycheck-form">
+      <div class="field">
+        <%= f.label :total_hours_worked %><br>
+        <%= f.text_field :total_hours_worked %>
+      </div>
+    </div>
+    <div class="row paycheck-form">
+      <div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+        <div class="row">
+          <%= link_to 'Back', employees_path %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

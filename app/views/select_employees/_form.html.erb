@@ -1,0 +1,25 @@
+<%= form_for(@select_employee) do |f| %>
+  <% if @select_employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@select_employee.errors.count, "error") %> prohibited this select_employee from being saved:</h2>
+
+      <ul>
+      <% @select_employee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <% @employees.each do |employee| %>
+      <div class="row text-center">
+        <div class="col-md-2">
+        <%= employee.name %>
+        <%= check_box :employee_ids %>
+        </div>
+      </div>
+    <% end %>
+  <%= f.submit %>
+  </div>
+<% end %>

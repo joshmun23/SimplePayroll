@@ -117,7 +117,6 @@ class EmployeesController < ApplicationController
   end
 
 
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
@@ -126,6 +125,6 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:name, :wage, :marital_status, :fica, :fwh, :swh, :claims, :fwh_fixed)
+      params.require(:employee).permit(:name, :wage, :marital_status, :fica, :fwh, :swh, :claims, :fwh_fixed, :selected)
     end
 end

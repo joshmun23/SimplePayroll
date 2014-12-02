@@ -15,6 +15,9 @@ class PaychecksController < ApplicationController
 
   # GET /paychecks/new
   def new
+    @selected_employees = []
+    @employees = Employee.all
+
     @paycheck = Paycheck.new
   end
 
@@ -71,6 +74,7 @@ class PaychecksController < ApplicationController
 
     def set_employees
       @employees = Employee.all
+      @options = @employees.each.with_object([]) {|employee,option| option << [employee.name,employee.id]}
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

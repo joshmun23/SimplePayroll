@@ -1,5 +1,7 @@
 class Employee < ActiveRecord::Base
   has_many :paychecks, dependent: :destroy
+  belongs_to :select_employee
+  
   validates :name, presence: true
   validates :wage, presence: true,
                    numericality: true

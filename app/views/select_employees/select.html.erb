@@ -1,0 +1,10 @@
+<% form_tag select_path, :method => :put  %>
+  <% for employee in @employees %>
+
+    <%= check_box_tag :employee_ids,  { :multiple => true }, employee.id, nil%>
+    <%= employee.name %>
+
+  <% end %>
+
+  <%= submit_tag "Submit all" %>
+<% end %>
