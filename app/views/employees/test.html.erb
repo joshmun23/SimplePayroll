@@ -1,0 +1,35 @@
+
+<div class="row top-buffer">
+  <div class="col-md-8 col-md-offset-2">
+    <strong><%= "Paycheck from #{@employee.paychecks[-1].start_date} to #{@employee.paychecks[-1].start_date" %></strong>
+  </div>
+
+  <div class="col-md-6 col-md-offset-3">
+    <strong><%= "Total Hours: #{@employee.paychecks[-1].total_hours_worked}" %></strong>
+  </div>
+  <div class="col-md-6 col-md-offset-3">
+    <strong><%= "Gross Wages: #{@employee.paychecks[-1].gross_wages}" %></strong>
+  </div>
+
+  <div class="row deduction-buffer">
+    <div class="col-md-6 col-md-offset-3">
+      <%= "FICA deduction: #{@employee.paychecks[-1].fica_deduction}" %>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+      <%= "FWH deduction: #{@employee.paychecks[-1].fwh_deduction}" %>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+      <%= "Additional FWH deduction: #{@employee.fwh_fixed}"%>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+      <%= "SWH deduction: #{@employee.paychecks[-1].swh_deduction}" %>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+      <strong><%= "Total deductions: #{@employee.paychecks[-1].total_deductions}" %></strong>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-md-offset-3">
+    <strong><%= "Net wages: #{@employee.paychecks[-1].net_wages}" %></strong>
+  </div>
+</div>
