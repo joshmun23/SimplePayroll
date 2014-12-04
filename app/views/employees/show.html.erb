@@ -1,41 +1,59 @@
+<div class="row text-center">
+  <p id="notice"><%= notice %></p>
+</div>
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @employee.name %>
-</p>
-
-<p>
-  <strong>Wage:</strong>
-  <%= @employee.wage %>
-</p>
-
-<p>
-  <strong>Marital status:</strong>
-  <%= @employee.marital_status %>
-</p>
-
-<p>
-  <strong>Fica:</strong>
-  <%= @employee.fica %>
-</p>
-
-<p>
-  <strong>Fwh:</strong>
-  <%= @employee.fwh %>
-</p>
-
-<p>
-  <strong>Swh:</strong>
-  <%= @employee.swh %>
-</p>
-
-<p>
-  <div class="col-md-12 text-center">
-    <%= link_to 'Edit', edit_employee_path(@employee) %> 
+<div class="row top-buffer text-center">
+  <div class="row">
+    <h2><%= @employee.name %></h2>
   </div>
-</p>
+
+  <div class="row top-buffer">
+
+    <div class="col-md-2">
+      <strong>Wage</strong>
+    </div>
+    <div class="col-md-2">
+      <strong>Marital status</strong>
+    </div>
+    <div class="col-md-2">
+      <strong>Fica</strong>
+    </div>
+    <div class="col-md-2">
+      <strong>Fwh</strong>
+    </div>
+    <div class="col-md-2">
+      <strong>Fwh Additional (+$)</strong>
+    </div>
+    <div class="col-md-2">
+      <strong>Swh</strong>
+    </div>
+  </div>
+
+  <div class="row new-form">
+    <div class="col-md-2">
+      <%= @employee.wage %>
+    </div>
+    <div class="col-md-2">
+      <%= @employee.marital_status %>
+    </div>
+    <div class="col-md-2">
+      <%= @employee.fica %>
+    </div>
+    <div class="col-md-2">
+      <%= @employee.fwh %>
+    </div>
+    <div class="col-md-2">
+      <%= @employee.fwh_fixed %>
+    </div>
+    <div class="col-md-2">
+      <%= @employee.swh %>
+    </div>
+  </div>
+
+  <div class="col-md-12 text-center">
+    <%= link_to 'Edit Employee', edit_employee_path(@employee) %> 
+  </div>
+</div>
 
 <% if @employee.paychecks.any? %>
 
@@ -124,7 +142,7 @@
 <div class="row top-buffer">
   <div class="row text-center">
     <div class="col-md-1 col-md-offset-5">
-      <%= link_to 'View Employees', employees_path %>
+      <%= link_to 'View All Employees', employees_path %>
     </div>
     <div class="col-md-1">
       <%= link_to 'New Paycheck', new_paycheck_path %>

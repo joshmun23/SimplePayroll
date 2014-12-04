@@ -1,6 +1,14 @@
-<h1>Editing employee</h1>
+<div class="row top-buffer text-center">
+  <h1>Editing employee</h1>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @employee %> |
-<%= link_to 'Back', employees_path %>
+<div class="row-fluid text-center">
+  <div class="col-md-12">
+    <%= link_to 'Show', @employee %>
+  </div>
+  <div class="col-md-12">
+    <%= link_to 'Back', employees_path %>
+  </div>
+</div>
